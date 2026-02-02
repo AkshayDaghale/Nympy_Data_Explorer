@@ -1,3 +1,63 @@
-{
-	"folders": []
-}
+import numpy as np
+
+student=np.array(["amit","om","sai","sunny"])
+
+mark=np.array([[56,89,90],
+               [78,65,89],
+               [90,78,76],
+               [87,65,70]])
+               
+print(student)    
+print(mark)
+
+
+print("**average mark of each student**")
+student_avg=np.mean(mark,axis=1)
+for i in range(len(student)):
+    print(f"{student[i] :<6}:{student_avg[i]:.2f}")
+    
+
+print("**average mark of each subject** ")
+
+subject_avg=np.mean(mark,axis=0)
+subject=["phy","chem","math"]
+for i in range (len(subject)):
+    print(f"{subject[i] :<6}:{subject_avg[i]:.2f}")
+    
+print("**Topper student**")
+
+topper_i=np.argmax(student_avg)
+print("Topper Name :",student[topper_i])
+print("highest average mark :",f"{student_avg[topper_i] :.2f}")
+
+print("**Highest And lowest Mark**")
+print("Highest mark in class:",np.max(mark))
+print("Lowest  mark in class:",np.min(mark))
+
+
+print("**percentage calculation**")
+total_mark=np.sum(mark,axis=1)
+percentage=(total_mark/300)*100
+for i in range(len(student)):
+    print(f"{student[i]:<6}:{percentage[i] :.2f}" ,"%")
+    
+    
+print("**grade of students**")
+
+for i in range(len(student)):
+    if(percentage[i]>=90 and percentage[i]<=100):
+        
+        grade="A+"
+    elif(percentage[i]>=80 and percentage[i]<90):
+        grade="A"
+    elif(percentage[i]>=70 and percentage[i]<80):
+        grade="B"
+    elif(percentage[i]>=60 and percentage[i]<70):
+        grade="C"
+    else:
+        grade="Fail"
+
+    print(f"{student[i]:<6}:",grade)
+   
+
+print("**successfully completed**")
